@@ -111,3 +111,57 @@ df1.groupby('gender').aggregate({'marks':[np.mean,'max','min','std','count']})
 
 #%%
 
+import matplotlib.pyplot as plt
+#https://matplotlib.org
+df1.groupby('gender').size()
+df1.groupby('gender').size().plot(kind='bar')
+
+plt.hist(df1['marks'])
+
+#https://seaborn.pydata.org/index.html
+
+import seaborn as sns
+
+#sns.net(style="ticks", color_codes=True)
+
+iris = sns.load_dataset("iris")
+iris.head()
+iris.tail()
+df1.groupby('gender').size()
+iris.groupby('species').size().plot(kind='bar')
+sns.pairplot(iris)
+
+#%%
+
+#Load Inbuilt datasets
+import statsmodels.api as sm
+#https://vincentarelbundock.github.io/Rdatasets/datasets.html
+mtcars=sm.datasets.get_rdataset(dataname='mtcars', package='datasets')
+mtcars.data.head()
+mtcars.data.tail()
+
+#%%
+
+#Load from Excel/CSV and export to
+data = mtcars.data
+data.head(6)
+type(data)
+data.to_csv('mtcars.csv')
+data.to_excel('mtcarsExcel.xlsx','sheet3',header=True)
+
+#writing to multiple sheets
+writer = pd.ExcelWriter('test.xlsx',engine='xlsxwriter')
+#write each dataframe to a different worksheet
+data.to_excel(writer, sheet_name='sheet1')
+data.to_excel(writer, sheet_name='sheet2')
+#close the Pandas Excel writer and output the Excel file
+writer.save()
+
+
+
+
+
+
+
+
+
