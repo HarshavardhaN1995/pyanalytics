@@ -73,10 +73,12 @@ mtcars.loc['Merc 280':'Volvo 142E'].filter(items=['cyl','am'])
 mtcars[(mtcars['mpg']>23) | (mtcars['wt']<2)]
 
 #using lambda for above
-temp = filter(lambda mtcars: mtcars)
+##temp = filter(lambda mtcars: mtcars)
 
 #with or condition
-for i in mtcars:  if (mtcars['mpg']>23 | mtcars ['print (mtcars[i])
+mtcars
+if ((mtcars.mpg>23) | (mtcars.wt<2)): mtcars
+##for i in mtcars:  if (mtcars['mpg']>23 | mtcars ['print (mtcars[i])
 
 
 #find unique rows of cyl, am, gear
@@ -84,11 +86,12 @@ mtcars.filter(items=['cyl','am','gear']).drop_duplicates()
 
 
 #create new columns: first make a copy of mtcars to mtcars2
-import shutil
-import csv
-pd.DataFrame({}).to_csv("mtcars2.csv")
-shutil.copyfile(mtcars,mtcars2)
+mtcars2 = mtcars
 
 #keeps other cols and divide displacement by 61
+mtcars2['New_Column'] = (mtcars.disp)/61
+mtcars2
 
 # multiple mpg * 1.5 and save as original column
+mtcars2.mpg = (mtcars.mpg)*1.5
+mtcars2

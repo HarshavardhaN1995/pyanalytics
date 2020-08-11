@@ -43,23 +43,15 @@ mtcars.ndim
 mtcars.axes
 mtcars.values
 
-#%%% access DF
-mtcarsDF[0:5]
-mtcarsDF[0:5,0:3]
+#%% access DF
+mtcarsDF.iloc[0:5]
+mtcarsDF.iloc[0:5,0:3]
 
 #single value: at
-mtcarsDF.at['Mazda RX4', 'mpg']
 mtcarsDF.at['Mazda RX4', 'mpg']
 
 #single values : iat : integer
 mtcarsDF.iat[0,0]
-mtcarsDF.iat[0,0:5]
-
-#set of values : loc : index values
-mtcarsDF.index
-mtcarsDF.loc[['Mazda 4X4']]
-mtcarsDF.loc['Mazda 4X4', ['mpg']]
-mtcarsDF.loc[7:9]
 
 #iloc
 mtcarsDF
@@ -112,12 +104,12 @@ mtcarsDF.skew(axis=1)
 #condition
 mtcarsDF['gear'] == 3  #T&F
 mtcars[mtcarsDF['gear'] == 3]  #rows with T for gear=3
-mtcars[mtcarsDF['gear'] != 3, ['gear','am']]
+mtcars[mtcarsDF['gear'] != 3].filter(items=['gear','am'])
 
 #another way
 mtcarsDF[mtcarsDF.gear.eq(3)]  #chaining method
 
-mtcarsDF[mtcarsDF['gear'] == 3 & mtcarsDF['am']== 0]
+mtcarsDF[(mtcarsDF['gear'] == 3) & (mtcarsDF['am']== 0)]   
 
 mtcarsDF.gear.unique()
 mtcarsDF.carb.unique()
